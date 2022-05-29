@@ -16,5 +16,7 @@ Já na pasta Frontend/src/ altere o baseURL para "https://<seu ip>:3333".
 # Como rodar?
 com um terminal na pasta Frontend/src escreva o comando "yarn add react-native", depois "yarn run start", com o mesmo terminal(splited) entre no mesmo diretório e escreva "yarn run android"
 em agora na pasta Backend/ escreva o comando "yarn dev", aguarde um pouco e o aplicativo estará funcionando.
+  
+Se após isso aparecer algum erro, rode novamente o "yarn run start" e o "yarn run android".
 
 
