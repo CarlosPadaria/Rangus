@@ -83,7 +83,7 @@ const EditarReceita = ({navigation}) => {
 
   const AtualizarReceita = () => {
     const funcAtualizar = async () => {
-      console.log(page);
+    //  console.log(page);
       try {
         const atualizar = await Api.put(`/receitas/${page}`, {
           TITULO: titulo,

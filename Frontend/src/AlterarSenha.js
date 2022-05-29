@@ -123,7 +123,7 @@ const AlterarSenha = ({navigation}) => {
     }
 
     if (Validar === true) {
-      console.log(user.ID_USUARIO);
+    //  console.log(user.ID_USUARIO);
       const AlterarSenha = async () => {
         try {
           const realizarAlteracao = await Api.patch(
@@ -143,7 +143,7 @@ const AlterarSenha = ({navigation}) => {
             borderColor: '#ff0000',
           });
           setMensagemSenha('Falha ao alterar senha');
-          console.log();
+        //  console.log();
         }
       };
 

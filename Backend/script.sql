@@ -62,17 +62,38 @@ INSERT INTO RECEITA(ID_USUARIO, IMAGEM, TITULO, PORCAO, TEMPO, ATIVA)
 VALUES (4, 'https://s2.glbimg.com/DnsDp5_cwUYLCQ8O3WqsKWaBVMU=/0x0:300x225/984x0/smart/filters:strip_icc()/s.glbimg.com/po/rc/media/2013/02/20/10_17_21_740_Banana_Frita.jpg', 'Banana Frita', '1','10min', 'true');
 
 INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
-VALUES(1, '1 Ovo');
+VALUES(1, '2 bananas');
+INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
+VALUES(1, '1 colher de manteiga');
 
 INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
-VALUES (1, 'COLOQUE NA FRIGIDEIRA', 1);
+VALUES (1, 'Ligue o fogo e coloque a manteiga', 1);
 INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
-VALUES (1, 'Esquente', 2);
+VALUES (1, 'Após a manteiga derreter, coloque as bananas', 2);
+INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
+VALUES (1, 'Após elas dourarem, coloque em um recipiente', 3);
+INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
+VALUES (1, 'Sirva-se', 4);
+
 
 INSERT INTO RECEITA(ID_USUARIO, IMAGEM, TITULO, PORCAO, TEMPO, ATIVA)
 VALUES (4, 'https://www.sabornamesa.com.br/media/k2/items/cache/c501a702ef05e90d163a1eeeb1633357_XL.jpg', 'Pastel Frito', '10', '20min', 'true');
 
-SELECT * FROM RECEITA;
-SELECT * FROM INGREDIENTE;
-SELECT * FROM PASSOS;
+INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
+VALUES(1, 'massa pronta de pastel');
+INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
+VALUES(1, '250g de carne moída');
+INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
+VALUES(1, '300ml de óleo de soja');
+
+INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
+VALUES (2, 'Abra a massa dos pastéis e coloque a carne moída já cozida', 1);
+INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
+VALUES (2, 'Em uma panela, adicione o óleo e ligue no fogo alto', 2);
+INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
+VALUES (2, 'Coloque os pastéis e deixe por 15 minutos', 3);
+INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
+VALUES (2, 'Retire os pastéis', 4);
+INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
+VALUES (2, 'Sirva-se',  5);
 

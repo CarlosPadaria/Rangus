@@ -32,7 +32,7 @@ const PaginaReceita = () => {
     CarregarIngredientes();
     CarregarPassos();
     setLoadingData(true);
-    console.log(page);
+    //console.log(page);
   }, []);
 
   useEffect(() =>{
@@ -40,7 +40,7 @@ const PaginaReceita = () => {
       let arr = [];
       for(i = 0; i < passos.length; i++){
         arr.push(false);
-        console.log(arr[i]);
+      //  console.log(arr[i]);
       }
       setChecked(arr);
     }

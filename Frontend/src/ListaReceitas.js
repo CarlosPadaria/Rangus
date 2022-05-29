@@ -37,18 +37,6 @@ const ListaReceitas = ({navigation}) => {
     CarregarReceitas();
   }, [, loading]);
 
-  useEffect(() => {
-    console.log(receitas);
-  }, [receitas]);
-
-  /*useEffect(()=>{
-    if(search === ''){
-      setFilteredData(receitas)
-    }
-  },[search])*/
-  /*const AbrirModal = () => {
-    modalizeRef.current?.open();
-  }*/
   const CarregarReceitas = () => {
     const funcCarregar = async () => {
       try {
@@ -148,7 +136,6 @@ const ListaReceitas = ({navigation}) => {
             <Text style={{marginBottom: 10}}>Deseja excluir a receita?</Text>
             <Pressable
               onPress={() => {
-                console.log('apagar');
                 if (checkBox === true) {
                   ApagarReceita();
                   setModalApagar(false);

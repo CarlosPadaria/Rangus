@@ -308,15 +308,6 @@ const CadastrarReceitas = ({navigation}) => {
           <TouchableOpacity style={styles.btnSubmit} onPress={handleSubmit}>
             <Text style={styles.ingredienteText}>Cadastrar Receita</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btnSubmit} onPress={
-            ()=>{
-              for(i = 0; i < passos.length; i++){
-                console.log(passos[i].passo)
-              }
-            }
-          }>
-            <Text style={styles.ingredienteText}>Listar Passos</Text>
-          </TouchableOpacity>
           <Text style={{color: 'red'}}>{mensagem}</Text>
         </View>
       </ScrollView>

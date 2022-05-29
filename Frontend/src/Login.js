@@ -56,7 +56,6 @@ const Login = ({navigation}) => {
       });
     }
     setMensagemEmail('');
-    // console.log(email)
   }, [email]);
 
   useEffect(() => {
@@ -70,15 +69,10 @@ const Login = ({navigation}) => {
     }
     setMensagemSenha('');
   }, [senha]);
-  // console.log(carregando);
-  // console.log(response);
-  // remove unhandled promise rejection message
-  // LogBox.ignoreAllLogs(disable);
-  // console.log(response.status);
+
 
   const btnSubmit = () => {
     let deveCarregar = true;
-    console.log('hello, world');
     if (email === '') {
       setInputEmail({
         ...styles.inputEmail,
@@ -106,7 +100,6 @@ const Login = ({navigation}) => {
             EMAIL: email,
             SENHA: senha,
           });
-          console.log('vindo diretamente do try');
           setResponse(realizarLogin);
           setVerificar(true);
         } catch {
@@ -116,7 +109,7 @@ const Login = ({navigation}) => {
             borderWidth: 2,
           });
           setMensagemEmail('Email ou Senha incorretos');
-          console.log('faiou');
+          console.log('falha, dados incorretos');
         }
       };
       setCarregando(true);
