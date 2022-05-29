@@ -80,11 +80,11 @@ INSERT INTO RECEITA(ID_USUARIO, IMAGEM, TITULO, PORCAO, TEMPO, ATIVA)
 VALUES (4, 'https://www.sabornamesa.com.br/media/k2/items/cache/c501a702ef05e90d163a1eeeb1633357_XL.jpg', 'Pastel Frito', '10', '20min', 'true');
 
 INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
-VALUES(1, 'massa pronta de pastel');
+VALUES(2, 'massa pronta de pastel');
 INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
-VALUES(1, '250g de carne moída');
+VALUES(2, '250g de carne moída');
 INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
-VALUES(1, '300ml de óleo de soja');
+VALUES(2, '300ml de óleo de soja');
 
 INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
 VALUES (2, 'Abra a massa dos pastéis e coloque a carne moída já cozida', 1);
@@ -97,3 +97,9 @@ VALUES (2, 'Retire os pastéis', 4);
 INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
 VALUES (2, 'Sirva-se',  5);
 
+
+
+/* * FROM RECEITA;
+SELECT * FROM INGREDIENTE;
+SELECT * FROM PASSOS;
+*/

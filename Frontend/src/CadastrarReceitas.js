@@ -31,6 +31,7 @@ const CadastrarReceitas = ({navigation}) => {
   const [mensagem, setMensagem] = useState('');
   const [verificar, setVerificar] = useState(false);
   const [verificar2, setVerificar2] = useState(false);
+  const [verificar3, setVerificar3] = useState(false);
   const [tempo, setTempo] = useState('');
  // let realizarCadastro = {};
   let realizarCadastroIngrediente = {};
@@ -40,9 +41,27 @@ const CadastrarReceitas = ({navigation}) => {
 
   useEffect(() =>{
     if(navegar === true){
+      setIngredientes([]);
+      setPassos([]);
+      setImagem('')
+      setTempo('');
+      setTitulo('')
+      setPorcao('');
+      setResponse({})
+      setMensagem('')
+      setVerificar(false)
+      setVerificar2(false)
+      setVerificar3(false)
+      setNavegar(false);
       navigation.navigate('ListarReceitas');
     }
   },[navegar])
+
+  useEffect(() =>{
+    if(verificar3 === true){
+      setNavegar(true);
+    }
+  },[verificar3])
   useEffect(() =>{
     if(verificar === true)
     {
@@ -87,6 +106,7 @@ const CadastrarReceitas = ({navigation}) => {
         }
       };
       CadastrarPasso();
+      setVerificar3(true);
   }
 
 
