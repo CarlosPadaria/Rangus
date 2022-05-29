@@ -5,9 +5,9 @@ Trata-se de um aplicativo de receitas, feito com React Native(Frontend), Node(Ba
 Qualquer uso deste projeto deverá ser notificado.
 
 # Requisitos
-MySQL Workbench configurado
-Android Studio configurado
-React Native configurado
+MySQL Workbench configurado,
+  Android Studio configurado,
+  React Native configurado,
 # Como setar?
 
 Primeiro você deve executar o script.sql(dentro da pasta Backend) pelo MySQL Workbench. Na mesma pasta altere o ormconfig.json, coloque o password como a senha que você colocou no MySQL Workbench, também altere o username pro seu nome de usuário no MySQL Workbench(normalmente já vem como root).
