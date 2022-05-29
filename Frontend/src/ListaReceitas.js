@@ -99,24 +99,26 @@ const ListaReceitas = ({navigation}) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}></Text>
             <Pressable
+            style={styles.modalButton}
               onPress={() => {
                 setModalActive(false);
                 navigation.navigate('EditarReceita');
               }}>
-              <Text>Editar</Text>
+              <Text style={styles.submitText}>Editar</Text>
             </Pressable>
             <Pressable
+            style={styles.modalButtonDelete}
               onPress={() => {
                 setModalActive(false);
                 setModalApagar(true);
               }}>
-              <Text>Excluir</Text>
+              <Text style={styles.submitText}>Excluir</Text>
             </Pressable>
             <Pressable
               onPress={() => {
                 setModalActive(false);
               }}>
-              <Text>Fechar</Text>
+              <Text style={{fontSize: 18, color: '#cc0000'}}>Fechar</Text>
             </Pressable>
           </View>
         </View>
@@ -133,8 +135,9 @@ const ListaReceitas = ({navigation}) => {
             <CheckBox
               onValueChange={newValue => setCheckBox(newValue)}
               value={checkBox}></CheckBox>
-            <Text style={{marginBottom: 10}}>Deseja excluir a receita?</Text>
+            <Text style={{marginBottom: 10, fontSize: 18}}>Deseja excluir a receita?</Text>
             <Pressable
+            style={styles.modalButtonDelete}
               onPress={() => {
                 if (checkBox === true) {
                   ApagarReceita();
@@ -142,13 +145,14 @@ const ListaReceitas = ({navigation}) => {
                   setLoading(!loading);
                 }
               }}>
-              <Text>Excluir</Text>
+              <Text style={{fontSize: 18, color: '#ffffff'}} >Excluir</Text>
             </Pressable>
             <Pressable
+            
               onPress={() => {
                 setModalApagar(false);
               }}>
-              <Text>Cancelar</Text>
+              <Text style={{fontSize: 18, color: '#cc0000'}}>Cancelar</Text>
             </Pressable>
           </View>
         </View>
@@ -293,7 +297,41 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     // paddingTop: 50,
   },
+  modalButton: {
+    padding: 10,
+    marginBottom: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: '#48BF84',
+    width: '100%',
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 28,
+    // paddingTop: 50,
+  },
+  modalButtonDelete: {
+    padding: 10,
+    marginBottom: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: '#cc0000',
+    width: '100%',
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 28,
+    // paddingTop: 50,
+  },
   submitText: {
+    color: '#ffffff',
+    fontSize: 18,
+   // fontWeight: 'bold',
+   // padding: 50,
+    
+    fontFamily: 'Outfit-Regular',
+  },
+  closeText: {
     color: '#ffffff',
     fontSize: 18,
    // fontWeight: 'bold',
@@ -336,6 +374,7 @@ const styles = StyleSheet.create({
     padding: 35,
     width: 200,
     alignItems: 'center',
+    justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
