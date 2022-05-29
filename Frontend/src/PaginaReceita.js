@@ -278,7 +278,7 @@ const PaginaReceita = () => {
             <View
               style={{
                 flexDirection: 'row',
-                width: '70%',
+                width: '60%',
                 // paddingTop: 25,
                 alignItems: 'center',
                 //justifyContent: 'center',
@@ -297,10 +297,14 @@ const PaginaReceita = () => {
                 {item.DESCRICAO}
               </Text>
               
-              <View>
+              <View style={{
+                //width: "40%",
+              //  backgroundColor: 'blue',
+                justifyContent: 'flex-start'
+              }}>
              <CheckBox
               style={{
-                marginLeft: 'auto',
+               // marginLeft: 'auto'
                 //paddingLeft: 10
               }}
             value={checked[index]}
