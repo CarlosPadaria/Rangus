@@ -11,7 +11,7 @@ MySQL Workbench configurado,
 # Como setar?
 
 Primeiro você deve executar o script.sql(dentro da pasta Backend) pelo MySQL Workbench. Na mesma pasta altere o ormconfig.json, coloque o password como a senha que você colocou no MySQL Workbench, também altere o username pro seu nome de usuário no MySQL Workbench(normalmente já vem como root).
-Já na pasta Frontend/src/ altere o baseURL para "https://<seu ip>:3333".
+Já na pasta Frontend/src/ altere o baseURL para "https://{seu ip}:3333".
 
 # Como rodar?
 com um terminal na pasta Frontend/src escreva o comando "yarn add react-native", depois "yarn run start", com o mesmo terminal(splited) entre no mesmo diretório e escreva "yarn run android"
