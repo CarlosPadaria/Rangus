@@ -215,7 +215,7 @@ const CadastrarReceitas = ({navigation}) => {
           style={{justifyContent: 'center', alignItems: 'center'}}
           removeClippedSubviews={false}>
           <TextInput
-            maxLength={300}
+            maxLength={1000}
             style={styles.input}
             multiline={true}
             blurOnSubmit={true}
@@ -241,7 +241,7 @@ const CadastrarReceitas = ({navigation}) => {
         <Text style={styles.textoDoInput}>Tempo</Text>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <TextInput
-            maxLength={100}
+            maxLength={30}
             style={styles.input}
             multiline={true}
             blurOnSubmit={true}
@@ -264,7 +264,7 @@ const CadastrarReceitas = ({navigation}) => {
               onChangeText={value => handleChangeIngrediente(index, value)}
               style={styles.inputIngrediente}
               multiline={true}
-             
+              //maxLength={100}
             
             /*  onBlur={()=>{
                 setArrayStyleIngredientes({

@@ -203,7 +203,7 @@ const EditarReceita = ({navigation}) => {
           style={{justifyContent: 'center', alignItems: 'center'}}
           removeClippedSubviews={false}>
           <TextInput
-            maxLength={300}
+            maxLength={1000}
             style={styles.input}
             multiline={true}
             blurOnSubmit={true}
@@ -228,7 +228,7 @@ const EditarReceita = ({navigation}) => {
         <Text style={styles.textoDoInput}>Tempo</Text>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <TextInput
-            maxLength={100}
+            maxLength={30}
             style={styles.input}
             multiline={true}
             blurOnSubmit={true}
