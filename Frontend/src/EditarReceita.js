@@ -30,7 +30,7 @@ const EditarReceita = ({navigation}) => {
   const [response, setResponse] = useState({});
   const [mensagem, setMensagem] = useState('');
   const [verificar, setVerificar] = useState(false);
-  const [navegar, setNavegar]= useState(false);
+  const [navegar, setNavegar] = useState(false);
   const [tempo, setTempo] = useState('');
   const [carregarPassos, setCarregarPassos] = useState('');
   let realizarCadastro = {};
@@ -44,17 +44,18 @@ const EditarReceita = ({navigation}) => {
     // handleListarIngredientes();
   }, []);
 
-  useEffect(() =>{
-    if(carregarPassos === true){
+  useEffect(() => {
+    if (carregarPassos === true) {
       AtualizarPassos();
     }
-  },[carregarPassos])
-  useEffect(()=>{
-    if(navegar){
-      setLoading(!loading)
+  }, [carregarPassos]);
+
+  useEffect(() => {
+    if (navegar === true) {
+      setLoading(!loading);
       navigation.navigate('ListarReceitas');
     }
-  }, [navegar])
+  }, [navegar]);
 
   const handleAddIngrediente = () => {
     setIngredientes([...ingredientes, {NOME: ''}]);
@@ -83,7 +84,7 @@ const EditarReceita = ({navigation}) => {
 
   const AtualizarReceita = () => {
     const funcAtualizar = async () => {
-    //  console.log(page);
+      //  console.log(page);
       try {
         const atualizar = await Api.put(`/receitas/${page}`, {
           TITULO: titulo,
@@ -101,11 +102,10 @@ const EditarReceita = ({navigation}) => {
   const handleSubmit = () => {
     AtualizarReceita();
     ApagarPassosIngredientes();
-  //  AtualizarIngredientesPassos();
-    AtualizarIngredientes()
-   // setLoading(!loading);
+    //  AtualizarIngredientesPassos();
+    AtualizarIngredientes();
+    // setLoading(!loading);
     //setNavegar(true);
-   
   };
 
   const AtualizarIngredientes = () => {
@@ -119,11 +119,11 @@ const EditarReceita = ({navigation}) => {
         }
       };
       CadastrarIngredientes();
-      setCarregarPassos(true);
     }
-  }
+    setCarregarPassos(true);
+  };
   const AtualizarPassos = () => {
-     if (passos.length > 0) {
+    if (passos.length > 0) {
       const CadastrarPassos = async () => {
         for (i = 0; i < passos.length; i++) {
           realizarCadastroPasso = await Api.post('/passos', {
@@ -135,10 +135,9 @@ const EditarReceita = ({navigation}) => {
       };
 
       CadastrarPassos();
-      setNavegar(true);
     }
-  }
-   
+    setNavegar(true);
+  };
 
   const ApagarPassosIngredientes = () => {
     const funcApagarPassos = async () => {
@@ -368,16 +367,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     width: '70%',
     //marginTop: 50,
-   // marginBottom: 15,
+    // marginBottom: 15,
     color: '#000000',
     fontSize: 17,
-   // padding: 10,
+    // padding: 10,
     //borderWidth: 2,
     //: '#000000',
     borderRadius: 25,
     borderColor: '#ffffff',
     fontFamily: 'Outfit-Regular',
-    paddingLeft:20,
+    paddingLeft: 20,
     elevation: 4,
     borderWidth: 2,
   },
@@ -385,16 +384,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     width: '70%',
     //marginTop: 50,
-   // marginBottom: 15,
+    // marginBottom: 15,
     color: '#000000',
     fontSize: 17,
-   // padding: 10,
+    // padding: 10,
     //borderWidth: 2,
     //: '#000000',
     borderRadius: 25,
     borderColor: '#ffffff',
     fontFamily: 'Outfit-Regular',
-    paddingLeft:20,
+    paddingLeft: 20,
     elevation: 4,
     borderWidth: 2,
     marginBottom: 20,
@@ -403,16 +402,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     width: '70%',
     //marginTop: 50,
-   // marginBottom: 15,
+    // marginBottom: 15,
     color: '#000000',
     fontSize: 17,
-   // padding: 10,
+    // padding: 10,
     //borderWidth: 2,
     //: '#000000',
     borderRadius: 25,
     borderColor: '#48BF84',
     fontFamily: 'Outfit-Regular',
-    paddingLeft:20,
+    paddingLeft: 20,
     elevation: 4,
     borderWidth: 2,
     marginBottom: 20,
