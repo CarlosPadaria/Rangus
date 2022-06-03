@@ -65,16 +65,16 @@ const ListaReceitas = ({navigation}) => {
   const SearchFilter = text => {
     if (text) {
       const newData = receitas.filter(item => {
-        const itemData = item.TITULO
-          ? item.TITULO.toUpperCase()
-          : ''.toUpperCase();
-        const textData = text.toUpperCase();
-        return itemData.indexOf(textData) > -1;
-      });
+        if(item.TITULO.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+         item.CATEGORIA.toLowerCase().indexOf(text.toLowerCase()) > -1){
+          return item;
+        }
+      })
+
       setFilteredData(newData.reverse());
       setSearch(text);
     } else {
-      setFilteredData(receitas.reverse());
+      setFilteredData(receitas);
       setSearch(text);
     }
   };
@@ -198,6 +198,16 @@ const ListaReceitas = ({navigation}) => {
                 
                 }}*/
               >
+                <Text
+                  style={{
+                    marginTop: 18,
+                    fontSize: 18,
+                    textAlign: 'center',
+                    fontFamily: 'Outfit-Medium',
+                    color: '#A3A3A3',
+                  }}>
+                  {item.CATEGORIA}
+                </Text>
                 <Text
                   style={{
                     marginTop: 18,

@@ -32,7 +32,9 @@ const EditarReceita = ({navigation}) => {
   const [verificar, setVerificar] = useState(false);
   const [navegar, setNavegar] = useState(false);
   const [tempo, setTempo] = useState('');
+  const [categoria, setCategoria] = useState('')
   const [carregarPassos, setCarregarPassos] = useState('');
+  const [navegar2, setNavegar2] = useState(false);
   let realizarCadastro = {};
   let realizarCadastroIngrediente = {};
   let realizarCadastroPasso = {};
@@ -52,11 +54,18 @@ const EditarReceita = ({navigation}) => {
 
   useEffect(() => {
     if (navegar === true) {
-      setLoading(!loading);
-      navigation.navigate('ListarReceitas');
+    //  setLoading(!loading);
+      setNavegar2(true);
+      //navigation.navigate('ListarReceitas');
     }
   }, [navegar]);
 
+  useEffect(() => {
+    if(navegar2 === true){
+      setNavegar(false);
+      navigation.navigate('ListarReceitas');
+    }
+  }, [navegar2])
   const handleAddIngrediente = () => {
     setIngredientes([...ingredientes, {NOME: ''}]);
   };
@@ -91,6 +100,7 @@ const EditarReceita = ({navigation}) => {
           PORCAO: porcao,
           IMAGEM: imagem,
           TEMPO: tempo,
+          CATEGORIA: categoria,
         });
         setResponse(atualizar.data);
       } catch {
@@ -100,6 +110,7 @@ const EditarReceita = ({navigation}) => {
     funcAtualizar();
   };
   const handleSubmit = () => {
+
     AtualizarReceita();
     ApagarPassosIngredientes();
     //  AtualizarIngredientesPassos();
@@ -107,6 +118,35 @@ const EditarReceita = ({navigation}) => {
     // setLoading(!loading);
     //setNavegar(true);
   };
+
+  const handleVerificar = () => {
+    Verificar = true;
+
+    if(tempo === '' || titulo === '' || imagem === '' || porcao === ''){
+      Verificar = false;
+    }
+    if (passos.length === 0) {
+      Verificar = false;
+    } else {
+      for (i = 0; i < passos.length; i++) {
+        if (passos[i].passo === '') {
+          Verificar = false;
+          break;
+        }
+      }
+    }
+    if (ingredientes.length === 0) {
+      Verificar = false;
+    } else {
+      for (i = 0; i < ingredientes.length; i++) {
+        if (ingredientes[i].ingrediente === '') {
+          Verificar = false;
+          break;
+        }
+      }
+    }
+  
+  }
 
   const AtualizarIngredientes = () => {
     if (ingredientes.length > 0) {
@@ -161,6 +201,7 @@ const EditarReceita = ({navigation}) => {
         setPorcao(carregar.data.PORCAO);
         setImagem(carregar.data.IMAGEM);
         setTempo(carregar.data.TEMPO);
+        setCategoria(carregar.data.CATEGORIA)
       } catch {
         console.log('falha ao carregar');
       }
@@ -196,6 +237,21 @@ const EditarReceita = ({navigation}) => {
             style={styles.input}
             value={titulo}
             onChangeText={setTitulo}></TextInput>
+        </View>
+        <Text style={styles.textoDoInput}>Categoria</Text>
+        <View
+          style={{justifyContent: 'center', alignItems: 'center'}}
+          removeClippedSubviews={false}>
+          <TextInput
+            maxLength={30}
+            style={styles.input}
+            multiline={true}
+            blurOnSubmit={true}
+            selectTextOnFocus={true}
+            value={categoria}
+            contextMenuHidden={false}
+            onChangeText={setCategoria}
+            placeholder='Coloque a categoria, ex: "Salgado", "Doce" '></TextInput>
         </View>
         <Text style={styles.textoDoInput}>Imagem</Text>
         <View

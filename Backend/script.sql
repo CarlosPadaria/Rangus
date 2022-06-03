@@ -18,11 +18,12 @@ CREATE TABLE RECEITA(
 	ID_RECEITA INT NOT NULL AUTO_INCREMENT,
     ID_USUARIO INT NOT NULL,
 	-- TIPO VARCHAR(45) NOT NULL,
-    IMAGEM VARCHAR(1000),
+    IMAGEM VARCHAR(1000) NOT NULL,
     TITULO VARCHAR(100) NOT NULL,
-    PORCAO VARCHAR(100),
-    TEMPO VARCHAR(30),
+    PORCAO VARCHAR(100) NOT NULL,
+    TEMPO VARCHAR(30) NOT NULL,
     ATIVA VARCHAR(7) NOT NULL,
+    CATEGORIA VARCHAR(30) NOT NULL,
     PRIMARY KEY(ID_RECEITA, ID_USUARIO),
     FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
 );
@@ -58,8 +59,15 @@ VALUES (3, 'Dudu Gonzalez', 'dudu@gmail.com', 'dudu1234', 'USUARIO', "true");
 INSERT INTO USUARIO(ID_USUARIO, NOME, EMAIL, SENHA, TIPO_USUARIO, ATIVO)
 VALUES (4, 'Admin Marcos', 'marcos@gmail.com', 'admin123', 'ADMIN', "true");
 
-INSERT INTO RECEITA(ID_USUARIO, IMAGEM, TITULO, PORCAO, TEMPO, ATIVA)
-VALUES (4, 'https://s2.glbimg.com/DnsDp5_cwUYLCQ8O3WqsKWaBVMU=/0x0:300x225/984x0/smart/filters:strip_icc()/s.glbimg.com/po/rc/media/2013/02/20/10_17_21_740_Banana_Frita.jpg', 'Banana Frita', '1','10min', 'true');
+INSERT INTO RECEITA(ID_USUARIO, IMAGEM, TITULO, PORCAO, TEMPO, ATIVA, CATEGORIA)
+VALUES (4,
+'https://s2.glbimg.com/DnsDp5_cwUYLCQ8O3WqsKWaBVMU=/0x0:300x225/984x0/smart/filters:strip_icc()/s.glbimg.com/po/rc/media/2013/02/20/10_17_21_740_Banana_Frita.jpg',
+ 'Banana Frita',
+ '1',
+ '10min',
+ 'true',
+ 'Doces'
+ );
 
 INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
 VALUES(1, '2 bananas');
@@ -76,8 +84,13 @@ INSERT INTO PASSOS(ID_RECEITA, DESCRICAO, NUMERO)
 VALUES (1, 'Sirva-se', 4);
 
 
-INSERT INTO RECEITA(ID_USUARIO, IMAGEM, TITULO, PORCAO, TEMPO, ATIVA)
-VALUES (4, 'https://www.sabornamesa.com.br/media/k2/items/cache/c501a702ef05e90d163a1eeeb1633357_XL.jpg', 'Pastel Frito', '10', '20min', 'true');
+INSERT INTO RECEITA(ID_USUARIO, IMAGEM, TITULO, PORCAO, TEMPO, ATIVA, CATEGORIA)
+VALUES (4,
+'https://www.sabornamesa.com.br/media/k2/items/cache/c501a702ef05e90d163a1eeeb1633357_XL.jpg',
+'Pastel Frito',
+'10', '20min',
+'true',
+'Salgados');
 
 INSERT INTO INGREDIENTE(ID_RECEITA, NOME) 
 VALUES(2, 'massa pronta de pastel');

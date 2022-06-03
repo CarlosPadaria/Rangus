@@ -21,41 +21,56 @@ const PaginaReceita = () => {
   const {logged, setLogged, user, setUser, loading, setLoading, setPage, page} =
     useContext(AuthContext);
 
-  const [checked, setChecked] = useState({})
+  const [checked, setChecked] = useState({});
   const [receita, setReceita] = useState({});
   const [ingredientes, setIngredientes] = useState([{NOME: ''}]);
   const [passos, setPassos] = useState([{DESCRICAO: ''}]);
   const [loadingData, setLoadingData] = useState(false);
   const [ArrCheckBoxPassos, setArrCheckBoxPassos] = useState([]);
+  const [carregarAutor, setCarregarAutor] = useState(false);
+  const [autor, setAutor] = useState({});
+  const [autorCarregado, setAutorCarregado] = useState(false);
   useEffect(() => {
+    // setCarregarAutor(false);
     CarregarReceita();
     CarregarIngredientes();
     CarregarPassos();
     setLoadingData(true);
     //console.log(page);
+   
   }, []);
 
+
   useEffect(() =>{
-    if(ArrCheckBoxPassos === true){
+    if(carregarAutor === true){
+      CarregarAutor();
+    }
+  },[carregarAutor])
+  useEffect(() => {
+    if (ArrCheckBoxPassos === true) {
       let arr = [];
-      for(i = 0; i < passos.length; i++){
+      for (i = 0; i < passos.length; i++) {
         arr.push(false);
-      //  console.log(arr[i]);
+        //  console.log(arr[i]);
       }
       setChecked(arr);
     }
-  },[ArrCheckBoxPassos])
+  }, [ArrCheckBoxPassos]);
   const CarregarReceita = () => {
     const funcCarregar = async () => {
       try {
         const carregar = await Api.get(`/receitas/${page}`);
 
         setReceita(carregar.data);
+        setCarregarAutor(true);
       } catch {
         console.log('falha ao carregar');
       }
     };
     funcCarregar();
+   // setCarregarAutor(true);
+   // CarregarAutor();
+    
   };
   const CarregarIngredientes = () => {
     const funcCarregar = async () => {
@@ -82,6 +97,20 @@ const PaginaReceita = () => {
     };
     funcCarregar();
   };
+
+  const CarregarAutor = () => {
+    const funcCarregar = async () => {
+      try {
+        const carregar = await Api.get(`/usuarios/${receita.ID_USUARIO}`);
+
+        setAutor(carregar.data);
+      } catch {
+        console.log('falha ao carregar');
+      }
+    }
+    funcCarregar();
+    setAutorCarregado(true);
+  }
 
   return (
     <ScrollView style={{backgroundColor: '#F0F0F0'}}>
@@ -135,7 +164,7 @@ const PaginaReceita = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 padding: 50,
-                marginLeft: 5,
+                marginRight: 5,
                 // borderLeftWidth: 2,
                 //  borderColor: '#ADADAD',
                 backgroundColor: '#F0F0F0',
@@ -157,6 +186,43 @@ const PaginaReceita = () => {
                 }}>
                 {receita.PORCAO}
               </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                marginTop: 10,
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: '#F0F0F0',
+                padding: 50,
+                width: '90%',
+                marginRight: 5,
+              }}>     
+              {
+                autorCarregado === true ? (
+                  <Text style={{
+                    fontSize: 18,
+                  }}>
+                    Publicado por 
+                    <Text style={{fontWeight: 'bold',
+                    color: '#48BF84',
+                  }}> {autor.NOME} </Text>
+                  </Text>
+                )
+                :(
+                  <Text>
+                    carregando...
+                  </Text>
+                )
+            }
+             
             </View>
           </View>
         </View>
@@ -274,7 +340,6 @@ const PaginaReceita = () => {
         }}>
         {loadingData === true ? (
           passos.map((item, index) => (
-        
             <View
               style={{
                 flexDirection: 'row',
@@ -284,47 +349,50 @@ const PaginaReceita = () => {
                 //justifyContent: 'center',
               }}
               key={index}>
-                <Text
+              <Text
                 style={{
                   fontSize: 45,
                   color: '#48BF84',
-                }}
-                >{index + 1} </Text>
+                }}>
+                {index + 1}{' '}
+              </Text>
               <Text
                 style={{
                   fontSize: 18,
                 }}>
                 {item.DESCRICAO}
               </Text>
-              
-              <View style={{
-                //width: "40%",
-              //  backgroundColor: 'blue',
-                justifyContent: 'flex-start'
-              }}>
-             <CheckBox
-              style={{
-               // marginLeft: 'auto'
-                //paddingLeft: 10
-              }}
-            value={checked[index]}
-            onValueChange={()=>{
-              setChecked(checked.map((itemc, indexc) => {
-                if(index === indexc){
-                //return only the item that is checked
-                return !itemc
-                  
-                }
-                else{
-                  return itemc
-                }
-              }))
-            }}
-            //set this onValueChange to a function that deals with array of usestate
-              ></CheckBox>
+
+              <View
+                style={{
+                  //width: "40%",
+                  //  backgroundColor: 'blue',
+                  justifyContent: 'flex-start',
+                }}>
+                <CheckBox
+                  style={
+                    {
+                      // marginLeft: 'auto'
+                      //paddingLeft: 10
+                    }
+                  }
+                  value={checked[index]}
+                  onValueChange={() => {
+                    setChecked(
+                      checked.map((itemc, indexc) => {
+                        if (index === indexc) {
+                          //return only the item that is checked
+                          return !itemc;
+                        } else {
+                          return itemc;
+                        }
+                      }),
+                    );
+                  }}
+                  //set this onValueChange to a function that deals with array of usestate
+                ></CheckBox>
               </View>
             </View>
-            
           ))
         ) : (
           <Text>Carregando</Text>

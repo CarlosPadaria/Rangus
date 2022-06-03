@@ -31,6 +31,10 @@ module.exports = new EntitySchema({
     ATIVA: {
       type: "varchar",
       nullable: false,
+    },
+    CATEGORIA: {
+      type: "varchar",
+      nullable: false,
     }
   },
 

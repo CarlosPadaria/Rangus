@@ -32,6 +32,7 @@ const CadastrarReceitas = ({navigation}) => {
   const [verificar, setVerificar] = useState(false);
   const [verificar2, setVerificar2] = useState(false);
   const [verificar3, setVerificar3] = useState(false);
+  const [categoria, setCategoria] = useState('');
   const [tempo, setTempo] = useState('');
  // let realizarCadastro = {};
   let realizarCadastroIngrediente = {};
@@ -138,7 +139,7 @@ const CadastrarReceitas = ({navigation}) => {
   const handleSubmit = () => {
     let Verificar = true;
 
-    if (titulo === '' || porcao === '' || imagem === '') {
+    if (titulo === '' || porcao === '' || imagem === ''  || tempo === '') {
       Verificar = false;
     }
 
@@ -173,6 +174,7 @@ const CadastrarReceitas = ({navigation}) => {
             IMAGEM: imagem,
             PORCAO: porcao,
             TEMPO: tempo,
+            CATEGORIA: categoria,
             ATIVA: 'true',
           });
          // console.  log(realizarCadastro.data);
@@ -209,6 +211,21 @@ const CadastrarReceitas = ({navigation}) => {
             value={titulo}
             placeholder={'Digite o título da receita'}
             onChangeText={setTitulo}></TextInput>
+        </View>
+        <Text style={styles.textoDoInput}>Categoria</Text>
+        <View
+          style={{justifyContent: 'center', alignItems: 'center'}}
+          removeClippedSubviews={false}>
+          <TextInput
+            maxLength={30}
+            style={styles.input}
+            multiline={true}
+            blurOnSubmit={true}
+            selectTextOnFocus={true}
+            value={categoria}
+            contextMenuHidden={false}
+            onChangeText={setCategoria}
+            placeholder='Coloque a categoria, ex: "Salgado", "Doce" '></TextInput>
         </View>
         <Text style={styles.textoDoInput}>Imagem</Text>
         <View

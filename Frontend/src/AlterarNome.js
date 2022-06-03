@@ -15,7 +15,7 @@ import {
   Alert,
 } from 'react-native';
 import Api from './Api';
-
+// console.log hello world
 import {AuthContext} from './contexts/Auth';
 
 const AlterarNome = ({navigation}) => {
