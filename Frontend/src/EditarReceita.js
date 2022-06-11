@@ -35,6 +35,7 @@ const EditarReceita = ({navigation}) => {
   const [categoria, setCategoria] = useState('')
   const [carregarPassos, setCarregarPassos] = useState('');
   const [navegar2, setNavegar2] = useState(false);
+  const [navegar3, setNavegar3] = useState(false);
   let realizarCadastro = {};
   let realizarCadastroIngrediente = {};
   let realizarCadastroPasso = {};
@@ -63,9 +64,16 @@ const EditarReceita = ({navigation}) => {
   useEffect(() => {
     if(navegar2 === true){
       setNavegar(false);
-      navigation.navigate('ListarReceitas');
+      setLoading(!loading);
+      setNavegar3(true);
     }
   }, [navegar2])
+
+  useEffect(() => {
+    if(navegar3 === true){
+      navigation.navigate('ListarReceitas');
+    }
+  }, [navegar3])
   const handleAddIngrediente = () => {
     setIngredientes([...ingredientes, {NOME: ''}]);
   };
@@ -115,7 +123,7 @@ const EditarReceita = ({navigation}) => {
     ApagarPassosIngredientes();
     //  AtualizarIngredientesPassos();
     AtualizarIngredientes();
-    // setLoading(!loading);
+    
     //setNavegar(true);
   };
 
