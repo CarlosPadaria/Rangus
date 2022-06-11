@@ -113,10 +113,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   btnDesativar: {
-    marginTop: 80,
+    marginTop: 0,
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 50,
+    paddingBottom:  50,
   },
   sairText: {
     color: 'red',
