@@ -1,3 +1,5 @@
+<img src="printrangus.png">
+
 # Rangus
 
 Projeto feito como parte de nota semestral do segundo semestre, no curso de Desenvolvimento de Sistemas do Sesi Senai.
